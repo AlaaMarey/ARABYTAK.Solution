@@ -1,0 +1,87 @@
+[
+ {
+  "Id": 1,
+  "Name": "الامام للسيارات",
+  "Phone1": 1271111641,
+  "WhatsApp1": 1271111641,
+  "Facebook": "https://www.facebook.com/profile.php?id=100054587943088",
+  "Branch1": "https://maps.app.goo.gl/gs2RJVkHEtZnjE8Y6"
+ },
+ {
+  "Id": 2,
+  "Name": "اكستريم للسيارات",
+  "Phone1": 1278889831,
+  "WhatsApp1": 1278889831,
+  "Facebook": "https://www.facebook.com/XtremeAutomotiveEgypt",
+  "Instagram": "https://www.instagram.com/xtreme_auto_eg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+  "Branch1": "https://maps.app.goo.gl/gYEGrrpUdSS69jQW9",
+  "Branch2": "https://maps.app.goo.gl/v7oxQTnLmSp3mPvb6",
+  "Branch3": "https://maps.app.goo.gl/mb5NBh3qj2rP1R4E7"
+ },
+ {
+  "Id": 3,
+  "Name": "نيو الامام",
+  "Phone1": 1222209520,
+  "WhatsApp1": 1222209520,
+  "Facebook": "https://www.facebook.com/elemammotors1/",
+  "Branch1": "https://maps.app.goo.gl/tSfYL5YdGTz7Kof48"
+ },
+ {
+  "Id": 4,
+  "Name": "الجندى موتورز",
+  "Phone1": 1288888228,
+  "WhatsApp1": 1288888228,
+  "Facebook": "https://www.facebook.com/ElgendyMotors.eg",
+  "Instagram": "https://www.instagram.com/elgendymotorsegypt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+  "Branch1": "https://maps.app.goo.gl/dAoP1yG4Ar5aTHiE8"
+ },
+ {
+  "Id": 5,
+  "Name": "درايف ان موتورز",
+  "Phone1": 1281944342,
+  "WhatsApp1": 1281944342,
+  "Branch1": "https://maps.app.goo.gl/RWG2TYiz4Vfnv1VE8"
+ },
+ {
+  "Id": 6,
+  "Name": "تراست موتورز",
+  "Phone1": 1206978880,
+  "WhatsApp1": 1206978880,
+  "Facebook": "https://www.facebook.com/TrustMotorKia?mibextid=kFxxJD"
+ },
+ {
+  "Id": 7,
+  "Name": "الليثى اوتو جروب",
+  "Phone1": 1008889331,
+  "WhatsApp1": 1008889331,
+  "Facebook": "https://www.facebook.com/ellaithyautogroup",
+  "Instagram": "https://www.instagram.com/ellaithy.autogroup?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+  "Branch1": "https://maps.app.goo.gl/6MgDiMYBpmqhUgJcA"
+ },
+ {
+  "Id": 8,
+  "Name": "العربي المتحده",
+  "Phone1": 1070008937,
+  "Phone2": 1070008935,
+  "Phone3": 1070008938,
+  "WhatsApp1": 1070008937,
+  "Branch1": "https://maps.app.goo.gl/PVLcRPTErZtEGnFG6"
+ },
+ {
+  "Id": 9,
+  "Name": "المصريه الدوليه لتجاره السيارات",
+  "Phone1": 1153792428,
+  "Phone2": 1127272733,
+  "Phone3": 1158746866,
+  "WhatsApp1": 1153792428,
+  "Branch1": "https://maps.app.goo.gl/1D5nLFgBBcJ1AnweA"
+ },
+ {
+  "Id": 10,
+  "Name": "القرش للسيارات",
+  "Phone1": 1155559106,
+  "WhatsApp1": 1155559106,
+  "Facebook": "https://www.facebook.com/alqershcarshm",
+  "Branch1": "https://maps.app.goo.gl/pzv6kzLesCq1xq5Y8"
+ }
+]

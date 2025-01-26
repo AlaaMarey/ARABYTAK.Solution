@@ -1,0 +1,38 @@
+[
+ {
+  "Id": 1,
+  "Name": "تارجت",
+  "City": "الجيزة",
+  "Phone1": 1111125024,
+  "Phone2": 1010107147,
+  "Service1": "Rescue Winch"
+ },
+ {
+  "Id": 2,
+  "Name": "الهدي",
+  "City": "الجيزة",
+  "Phone1": 1000454531,
+  "Phone2": 1113333088,
+  "Service1": "Rescue Winch"
+ },
+ {
+  "Id": 3,
+  "Name": "العربي",
+  "City": "القاهرة",
+  "Phone1": 1288888025,
+  "Phone2": 1005544741,
+  "Phone3": 1022221684,
+  "Service1": "Rescue Winch",
+  "Service2": "Change The Tire",
+  "Service3": "Battery Charging",
+  "Service4": "Fuel Delivery"
+ },
+ {
+  "Id": 4,
+  "Name": "ونشك",
+  "City": "القاهرة",
+  "Phone1": 1210000819,
+  "Service1": "Rescue Winch",
+  "Service2": "Change The Tire"
+ }
+]

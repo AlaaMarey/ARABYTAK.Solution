@@ -1,0 +1,122 @@
+[
+    {
+      "Id": 1,
+      "Name": "Hyundai"
+    },
+    {
+      "Id": 2,
+      "Name": "Toyota"
+    },
+    {
+      "Id": 3,
+      "Name": "Kia"
+    },
+    {
+      "Id": 4,
+      "Name": "Nissan"
+    },
+    {
+      "Id": 5,
+      "Name": "Chevrolet"
+    },
+    {
+      "Id": 6,
+      "Name": "Renault"
+    },
+    {
+      "Id": 7,
+      "Name": "Mitsubishi"
+    },
+    {
+      "Id": 8,
+      "Name": "Peugeot"
+    },
+    {
+      "Id": 9,
+      "Name": "Chery"
+    },
+    {
+      "Id": 10,
+      "Name": "MG"
+    },
+    {
+      "Id": 11,
+      "Name": "Geely"
+    },
+    {
+      "Id": 12,
+      "Name": "Citroën"
+    },
+    {
+      "Id": 13,
+      "Name": "Suzuki"
+    },
+    {
+      "Id": 14,
+      "Name": "Proton"
+    },
+    {
+      "Id": 15,
+      "Name": "Opel"
+    },
+    {
+      "Id": 16,
+      "Name": "BMW"
+    },
+    {
+      "Id": 17,
+      "Name": "Mercedes-Benz"
+    },
+    {
+      "Id": 18,
+      "Name": "Audi"
+    },
+    {
+      "Id": 19,
+      "Name": "Porsche"
+    },
+    {
+      "Id": 20,
+      "Name": "Jaguar"
+    },
+    {
+      "Id": 21,
+      "Name": "Lexus"
+    },
+    {
+      "Id": 22,
+      "Name": "Infiniti"
+    },
+    {
+      "Id": 23,
+      "Name": "Cadillac"
+    },
+    {
+      "Id": 24,
+      "Name": "Volvo"
+    },
+    {
+      "Id": 25,
+      "Name": "Jeep"
+    },
+    {
+      "Id": 26,
+      "Name": "Land Rover"
+    },
+    {
+      "Id": 27,
+      "Name": "Range Rover"
+    },
+    {
+      "Id": 28,
+      "Name": "Toyota Land Cruiser"
+    },
+    {
+      "Id": 29,
+      "Name": "Ford"
+    },
+    {
+      "Id": 30,
+      "Name": "Mazda"
+    }
+]

@@ -1,0 +1,289 @@
+[
+  {
+    "Id": 1,
+    "status": "Used",
+    "Price": 1200000,
+    "condition": "Available",
+    "BrandId": 2,
+    "ModelId": 6,
+    "SpecUsedCarId": 1,
+    "DealershipId": 1
+   
+  },
+  {
+    "Id": 2,
+    "status": "Used",
+    "Price": 1135000,
+    "condition": "Available",
+    "BrandId": 10,
+    "ModelId": 50,
+    "SpecUsedCarId": 2,
+    "DealershipId": 1
+
+  },
+  {
+    "Id": 3,
+    "status": "Used",
+    "Price": 675000,
+    "condition": "Available",
+    "BrandId": 10,
+    "ModelId": 46,
+    "SpecUsedCarId": 3,
+    "DealershipId": 2
+
+  },
+  {
+    "Id": 4,
+    "status": "Used",
+    "Price": 1330000,
+    "condition": "Available",
+    "BrandId": 18,
+    "ModelId": 86,
+    "SpecUsedCarId": 4,
+    "DealershipId": 2
+
+  },
+  {
+    "Id": 5,
+    "status": "Used",
+    "Price": 400000,
+    "condition": "Available",
+    "BrandId": 15,
+    "ModelId": 71,
+    "SpecUsedCarId": 5,
+    "DealershipId": 3
+
+  },
+  {
+    "Id": 6,
+    "status": "Used",
+    "Price": 810000,
+    "condition": "Available",
+    "BrandId": 1,
+    "ModelId": 2,
+    "SpecUsedCarId": 6,
+    "DealershipId": 3
+
+  },
+  {
+    "Id": 7,
+    "status": "Used",
+    "Price": 1350000,
+    "condition": "Available",
+    "BrandId": 3,
+    "ModelId": 11,
+    "SpecUsedCarId": 7,
+    "DealershipId": 4
+
+  },
+  {
+    "Id": 8,
+    "status": "Used",
+    "Price": 1250000,
+    "condition": "Available",
+    "BrandId": 3,
+    "ModelId": 11,
+    "SpecUsedCarId": 8,
+    "DealershipId": 4
+
+  },
+  {
+    "Id": 9,
+    "status": "Used",
+    "Price": 840000,
+    "condition": "Available",
+    "BrandId": 13,
+    "ModelId": 62,
+    "SpecUsedCarId": 9,
+    "DealershipId": 5
+
+  },
+  {
+    "Id": 10,
+    "status": "Used",
+    "Price": 1225000,
+    "condition": "Available",
+    "BrandId": 2,
+    "ModelId": 6,
+    "SpecUsedCarId": 10,
+    "DealershipId": 5
+
+  },
+  {
+    "Id": 11,
+    "status": "Used",
+    "Price": 1020000,
+    "condition": "Available",
+    "BrandId": 16,
+    "ModelId": 76,
+    "SpecUsedCarId": 11,
+    "DealershipId": 6
+
+  },
+  {
+    "Id": 12,
+    "status": "Used",
+    "Price": 1070000,
+    "condition": "Available",
+    "BrandId": 2,
+    "ModelId": 6,
+    "SpecUsedCarId": 12,
+    "DealershipId": 7
+
+  },
+  {
+    "Id": 13,
+    "status": "Used",
+    "Price": 1000000,
+    "condition": "Available",
+    "BrandId": 2,
+    "ModelId": 6,
+    "SpecUsedCarId": 13,
+    "DealershipId": 8
+
+  },
+  {
+    "Id": 14,
+    "status": "Used",
+    "Price": 1100000,
+    "condition": "Available",
+    "BrandId": 2,
+    "ModelId": 6,
+    "SpecUsedCarId": 14,
+    "DealershipId": 9
+
+  },
+  {
+    "Id": 15,
+    "status": "Used",
+    "Price": 1150000,
+    "condition": "Available",
+    "BrandId": 2,
+    "ModelId": 6,
+    "SpecUsedCarId": 15,
+    "DealershipId": 10
+
+  },
+  {
+    "Id": 16,
+    "status": "New",
+    "Price": 4500000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 84,
+    "SpecNewCarId": 1,
+    "DealershipId": 1
+
+  },
+  {
+    "Id": 17,
+    "status": "New",
+    "Price": 4680000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 84,
+    "SpecNewCarId": 2,
+    "DealershipId": 2
+
+  },
+  {
+    "Id": 18,
+    "status": "New",
+    "Price": 7650000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 84,
+    "SpecNewCarId": 3,
+    "DealershipId": 2
+
+  },
+  {
+    "Id": 19,
+    "status": "New",
+    "Price": 5400000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 84,
+    "SpecNewCarId": 4,
+    "DealershipId": 3
+
+  },
+  {
+    "Id": 20,
+    "status": "New",
+    "Price": 5850000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 82,
+    "SpecNewCarId": 5,
+    "DealershipId": 4
+
+  },
+  {
+    "Id": 21,
+    "status": "New",
+    "Price": 7000000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 82,
+    "SpecNewCarId": 6,
+    "DealershipId": 5
+
+  },
+  {
+    "Id": 22,
+    "status": "New",
+    "Price": 7350000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 82,
+    "SpecNewCarId": 7,
+    "DealershipId": 6
+
+  },
+  {
+    "Id": 23,
+    "status": "New",
+    "Price": 7500000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 82,
+    "SpecNewCarId": 8,
+    "DealershipId": 7
+
+  },
+  {
+    "Id": 24,
+    "status": "New",
+    "Price": 10000000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 82,
+    "SpecNewCarId": 9,
+    "DealershipId": 8
+
+  },
+  {
+    "Id": 25,
+    "status": "New",
+    "Price": 3100000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 81,
+    "SpecNewCarId": 10,
+    "DealershipId": 9
+
+  },
+  {
+    "Id": 26,
+    "status": "New",
+    "Price": 4100000,
+    "condition": "Available",
+    "BrandId": 17,
+    "ModelId": 81,
+    "SpecNewCarId": 11,
+    "DealershipId": 10
+
+  }
+]
+

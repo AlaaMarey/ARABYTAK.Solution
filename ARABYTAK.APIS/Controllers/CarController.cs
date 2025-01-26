@@ -1,0 +1,78 @@
+﻿using Arabytak.Core.Entities;
+using Arabytak.Core.Repositories.Contract;
+using Arabytak.Core.Specification.CarSpecification;
+using ARABYTAK.APIS.DTOs;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
+
+namespace ARABYTAK.APIS.Controllers
+{
+
+    public class CarController : BaseApiController
+    {
+        private readonly IGenericRepository<Car> _genericRepository;
+        private readonly IMapper _mapper;
+        private readonly IGenericRepository<Brand> _brandRepo;
+        private readonly IGenericRepository<Dealership> _dealRepo;
+        private readonly IGenericRepository<RescueCompany> _rescueRepo;
+
+        public CarController(IGenericRepository<Car> genericRepository,IMapper mapper ,
+            IGenericRepository<Brand> brandRepo,IGenericRepository<Dealership> dealRepo
+            ,IGenericRepository<RescueCompany> RescueRepo)
+        {
+            _genericRepository = genericRepository;
+            
+            _mapper = mapper;
+            _brandRepo = brandRepo;
+            _dealRepo = dealRepo;
+            _rescueRepo = RescueRepo;
+        }
+        [HttpGet("{status}/{CarId}")]
+        public async Task<ActionResult<CarDto>> GetCarDetails(int CarId,[FromQuery] Status status)
+        {
+            var spec = new CarWithBrandAndCategoryAndPicUrlAndSpecSpecification(CarId,status);
+            var car = await _genericRepository.GetByIdWithSpecAsync(spec);
+            if(car==null)
+            {
+                return NotFound();
+            }
+           var carDto=_mapper.Map<Car,CarDto>(car);
+            carDto.CarName = $"{car.brand.Name} {car.model.Name}";
+            if(status==Status.New)
+            {
+                var specDto = _mapper.Map<SpecNewCar, SpecNewCarDto>(car.specNewCar);
+                carDto.Specifications= specDto;
+            }
+            else if(status==Status.Used)
+            {
+                var specDto= _mapper.Map<SpecUsedCar,SpecUsedCarDto>(car.specUsedCar);
+                carDto.Specifications= specDto;
+            }
+           // carDto.DealershipName = car.dealership.Name;
+           
+            return Ok(carDto);
+        }
+
+        [HttpGet("Brands")]
+        public async Task<ActionResult<IReadOnlyList<Brand>>> GetBrand()
+        {
+            var brands= await _brandRepo.GetAllAsync();
+            return Ok(brands);
+        }
+        [HttpGet("Dealership")]
+        public async Task<ActionResult<IReadOnlyList<Dealership>>> GetDealerShip()
+        {
+            var dealerships= await _dealRepo.GetAllAsync();
+            return Ok(dealerships);
+        }
+        [HttpGet("RescueCompany")]
+        public async Task<ActionResult<IReadOnlyList<RescueCompany>>> GetRescueCompany()
+        {
+            var RescueCompany=  await _rescueRepo.GetAllAsync();
+            return Ok(RescueCompany);
+
+        }
+    }
+}
