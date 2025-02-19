@@ -19,6 +19,10 @@ namespace Arabytak.Repository
             {
                 query=query.Where(spec.Criteria);//_store.Set<Car>().Where(c=>c.Id==id)
             }
+            if(spec.IsPaginationEnabled)
+            {
+                query=query.Skip(spec.Skip).Take(spec.Take);
+            }
             query=spec.Includes.Aggregate(query,(CurrentQuery,includeEcpression)=>CurrentQuery.Include(includeEcpression));
             //CurrentQuery=>شايل ال query لحد اخر حاجه ضفتها
             return query;//query= _dbcontext.set<Car>().Where(c=>c.Id==id).Include(c=>c.Brand). .....

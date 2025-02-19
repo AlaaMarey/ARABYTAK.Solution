@@ -4,6 +4,7 @@ namespace ARABYTAK.APIS.DTOs
 {
     public class CarDto
     {
+        public int Id { get; set; }  
         public string CarName { get; set; }
         public string status { get; set; }
         public decimal Price { get; set; }

@@ -55,6 +55,11 @@ namespace Arabytak.Repository.Repository.Contract
             return await ApplySpecification(spec).FirstOrDefaultAsync();
             }
 
+        public async Task<int> GetCountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
+
         public async Task<T> GetWithSpecAsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).FirstOrDefaultAsync();

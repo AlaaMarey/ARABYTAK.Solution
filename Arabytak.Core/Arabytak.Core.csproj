@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services.Contract\" />
+    <Compile Remove="Services.Contract\**" />
+    <EmbeddedResource Remove="Services.Contract\**" />
+    <None Remove="Services.Contract\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.12" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@
         public string? Message { get; set; }
         public ApiResponse(int statusCode, string? message= null)
         {
-            statusCode=StatusCode;
+            StatusCode= statusCode;
             Message = message?? GetDefaultMessageForStatusCode(statusCode);
         }
         private string? GetDefaultMessageForStatusCode(int statusCode)

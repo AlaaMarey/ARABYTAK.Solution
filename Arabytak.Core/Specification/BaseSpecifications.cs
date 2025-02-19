@@ -12,8 +12,8 @@ namespace Arabytak.Core.Specification
     {
         public Expression<Func<T, bool>> Criteria { get ; set; }//where(c=>c.Id==Id)
         public List<Expression<Func<T, object>>> Includes { get; set ; }= new List<Expression<Func<T, object>>>();
-        public Expression<Func<T, object>> OrderBy { get ; set ; }
-        public Expression<Func<T, object>> OrderByDesc { get ; set ; }
+        //public Expression<Func<T, object>> OrderBy { get ; set ; }
+        //public Expression<Func<T, object>> OrderByDesc { get ; set ; }
         public int Take { get ; set ; }
         public int Skip { get ; set ; }
         public bool IsPaginationEnabled { get ; set ; }
@@ -26,6 +26,12 @@ namespace Arabytak.Core.Specification
         public BaseSpecifications(Expression<Func<T,bool>> CriteriaExpression)
         {
             Criteria = CriteriaExpression;   
+        }
+        public void ApplyPagination(int skip , int take)
+        {
+            Take = take;
+            Skip = skip;
+            IsPaginationEnabled = true;
         }
     }
 }
