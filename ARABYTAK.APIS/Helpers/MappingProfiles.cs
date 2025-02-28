@@ -7,7 +7,7 @@ namespace ARABYTAK.APIS.Helpers
     public class MappingProfiles:Profile
     {
         public MappingProfiles()
-        {
+       {
             CreateMap<Car, CarDto>()
                 .ForMember(c => c.DealershipName, d => d.MapFrom(s => s.dealership.Name))
                 .ForMember(c => c.brand, d => d.MapFrom(s => s.brand.Name))
@@ -26,8 +26,87 @@ namespace ARABYTAK.APIS.Helpers
                 .ForMember(c=>c.CarName,d=>d.MapFrom(s=>$"{s.brand.Name} {s.model.Name}"))
                 .ForMember(c => c.Url, d => d.MapFrom(s => s.Url.Select(u => new CarPictureDto { Url = u.PictureUrl }).ToList()))
             .ForMember(dest => dest.Url, opt => opt.MapFrom<PictureUrlResolver>());
+            CreateMap<AdvertisementDto, Advertisement>()
+                        .ForMember(dest => dest.ContactInfo, opt => opt.MapFrom(src => src.ContactInfo))
+                        .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                        .ForMember(dest => dest.SellerEmail, opt => opt.MapFrom(src => src.SellerEmail))
+                        .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+
+                        // ربط السيارة بمعلومات العلامة التجارية والموديل
+                        .ForMember(dest => dest.Car, opt => opt.MapFrom(src => new Car
+                        {
+                            model = new Model { Name = src.model ?? string.Empty },
+                            brand = new Brand { Name = src.brand ?? string.Empty },
+                            specUsedCar = new SpecUsedCar
+                            {
+                                ManufacturingYear = src.YearOfManufacture,
+                                Mileage = src.Kilometers,
+                                Transmission = src.Transmission,
+                                Color = src.Color,
+                                FuelType = src.Fuel,
+                                City = src.Address
+                            }
+                        }))
+                        .ForMember(dest => dest.planForAdvertisement, opt => opt.MapFrom(src => new AdPlan
+                        {
+                            planType = (PlanType)src.TypeOfPlan,
+                            Price = src.PriceOfPlan,
+                        }))
+                        .ForPath(dest => dest.Car.Url, opt => opt.Ignore());// تجاهل رابط الصورة
+            CreateMap<Advertisement, AdvertisementResponseDto>()
+.ForMember(dest => dest.brand, opt => opt.MapFrom(src => src.Car.brand.Name))
+.ForMember(dest => dest.model, opt => opt.MapFrom(src => src.Car.model.Name))
+.ForMember(dest => dest.YearOfManufacture, opt => opt.MapFrom(src => src.Car.specUsedCar.ManufacturingYear))
+.ForMember(dest => dest.Kilometers, opt => opt.MapFrom(src => src.Car.specUsedCar.Mileage))
+.ForMember(dest => dest.Transmission, opt => opt.MapFrom(src => src.Car.specUsedCar.Transmission))
+.ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Car.specUsedCar.Color))
+.ForMember(dest => dest.Fuel, opt => opt.MapFrom(src => src.Car.specUsedCar.FuelType))
+.ForMember(dest=>dest.Address,opt=>opt.MapFrom(src=>src.Car.specUsedCar.City))
 
 
+.ForMember(dest => dest.Url, opt => opt.MapFrom(s =>
+    s.Car.Url.Select(p => new CarPictureDto { Url = p.PictureUrl }).ToList()));
+
+
+            CreateMap<AdvertisementUpdateDto, Advertisement>()
+    .ForMember(dest => dest.ContactInfo, opt => opt.MapFrom(src => src.ContactInfo))
+    .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+    .ForMember(dest => dest.SellerEmail, opt => opt.MapFrom(src => src.SellerEmail))
+    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+
+    // تحديث بيانات السيارة بدلاً من إنشائها من جديد
+    .ForMember(dest => dest.Car, opt => opt.MapFrom((src, dest) =>
+    {
+        if (dest.Car == null) dest.Car = new Car();
+
+        dest.Car.model ??= new Model();
+        dest.Car.brand ??= new Brand();
+        dest.Car.specUsedCar ??= new SpecUsedCar();
+
+        dest.Car.model.Name = src.model ?? dest.Car.model.Name;
+        dest.Car.brand.Name = src.brand ?? dest.Car.brand.Name;
+        dest.Car.specUsedCar.ManufacturingYear = src.YearOfManufacture;
+        dest.Car.specUsedCar.Mileage = src.Kilometers;
+        dest.Car.specUsedCar.Transmission = src.Transmission;
+        dest.Car.specUsedCar.Color = src.Color;
+        dest.Car.specUsedCar.FuelType = src.Fuel;
+        dest.Car.specUsedCar.City = src.Address;
+
+        return dest.Car;
+    }));
+
+
+
+
+            CreateMap<Advertisement,AdvertisementAllDto>()
+                .ForMember(dest => dest.brand, opt => opt.MapFrom(src => src.Car.brand.Name))
+                .ForMember(dest => dest.model, opt => opt.MapFrom(src => src.Car.model.Name))
+                .ForMember(dest=>dest.Price,opt=>opt.MapFrom(src=>src.Price))
+                .ForMember(dest => dest.Image, opt => opt.MapFrom(src =>
+     src.Car.Url.Select(url => new CarPictureDto { Url = url.PictureUrl }).FirstOrDefault()));
         }
+
+
     }
-}
+    }
+

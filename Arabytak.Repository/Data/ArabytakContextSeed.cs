@@ -1,4 +1,5 @@
 ﻿using Arabytak.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Arabytak.Repository.Data
                 }
             }
 
-            var CarData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Car.json");
+            var CarData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Car.json");//used
             var options = new JsonSerializerOptions
             {
                 Converters = { new JsonStringEnumConverter() }
@@ -60,6 +61,7 @@ namespace Arabytak.Repository.Data
                    await _dbContext.SaveChangesAsync();
               }
             }
+
             //var CarData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Car.json");
             //var options = new JsonSerializerOptions
             //{
@@ -83,7 +85,7 @@ namespace Arabytak.Repository.Data
             //    }
             //}
 
-            var SpecUsedData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Specification_Used.json");
+            var SpecUsedData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Specification_Used.json");//used
             var specUseds=JsonSerializer.Deserialize<List<SpecUsedCar>>(SpecUsedData);
             if(specUseds.Count() > 0)
             {
@@ -99,7 +101,7 @@ namespace Arabytak.Repository.Data
             }
 
 
-            var SpecNewData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Specification_New.json");
+            var SpecNewData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Specification_New.json");//used
             var specNews = JsonSerializer.Deserialize<List<SpecNewCar>>(SpecNewData);
             if (specNews.Count() > 0)
             {
@@ -115,7 +117,7 @@ namespace Arabytak.Repository.Data
 
 
 
-            var DealershipData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Dealership.json");
+            var DealershipData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/Dealership.json"); //used
             var Dealers = JsonSerializer.Deserialize<List<Dealership>>(DealershipData);
             if (Dealers.Count() > 0)
             {
@@ -130,7 +132,7 @@ namespace Arabytak.Repository.Data
             }
 
 
-            var RescueData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/RescueCompanies.json");
+            var RescueData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/RescueCompanies.json"); //used
             var Rescues = JsonSerializer.Deserialize<List<RescueCompany>>(RescueData);
             if (Rescues.Count() > 0)
             {
@@ -144,19 +146,55 @@ namespace Arabytak.Repository.Data
                 }
             }
 
-            var UrlData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/PictureUrl.json");
-            var Urls = JsonSerializer.Deserialize<List<CarPictureUrl>>(UrlData);
-            if (Urls.Count() > 0)
+            var UrlData = await File.ReadAllTextAsync("../Arabytak.Repository/Data/DataSeeding/PictureUrl.json");
+            var Urls = JsonSerializer.Deserialize<List<CarPictureUrl>>(UrlData) ?? new List<CarPictureUrl>();
+
+            if (Urls.Count > 0)
             {
-                if (_dbContext.carsPictureUrls.Count()==0)
+                foreach (var Url in Urls)
                 {
-                  foreach (var Url in Urls)
-                  {
-                      _dbContext.Set<CarPictureUrl>().Add(Url);
-                  }
-                  await _dbContext.SaveChangesAsync();
-              }
+                    var existingEntity = await _dbContext.carsPictureUrls
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(c => c.Id == Url.Id);
+
+                    if (existingEntity == null)
+                    {
+                        // الكائن غير موجود -> أضفه
+                        await _dbContext.Set<CarPictureUrl>().AddAsync(Url);
+                    }
+                    else
+                    {
+                        // الكائن موجود مسبقًا -> قم بتحديثه
+                        // تأكد من أن الكائن غير متتبع من قبل DbContext
+                        var entry = _dbContext.Entry(Url);
+                        if (entry.State == EntityState.Detached)
+                        {
+                            _dbContext.Set<CarPictureUrl>().Attach(Url);
+                        }
+                        entry.State = EntityState.Modified;
+                    }
+                }
+
+                await _dbContext.SaveChangesAsync();
             }
+
+
+
+
+
+            //var UrlData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/PictureUrl.json");//used
+            //var Urls = JsonSerializer.Deserialize<List<CarPictureUrl>>(UrlData);
+            //if (Urls.Count() > 0)
+            //{
+            //    if (_dbContext.carsPictureUrls.Count()==0)
+            //    {
+            //      foreach (var Url in Urls)
+            //      {
+            //          _dbContext.Set<CarPictureUrl>().Add(Url);
+            //      }
+            //      await _dbContext.SaveChangesAsync();
+            //  }
+            //}
             //var UrlData = File.ReadAllText("../Arabytak.Repository/Data/DataSeeding/PictureUrl.json");
             //var Urls = JsonSerializer.Deserialize<List<CarPictureUrl>>(UrlData);
 

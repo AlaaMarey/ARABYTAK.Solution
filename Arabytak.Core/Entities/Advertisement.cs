@@ -20,6 +20,7 @@ namespace Arabytak.Core.Entities
        // public string TransactionId { get; set; }  // رقم العملية للدفع (إن وجد)
         public DateTime ExpiryDate { get; set; }   // تاريخ انتهاء صلاحية الإعلان
         public int? AdPlanId { get; set; }//Fk[AdPlan]--Handle by FluentApi
+
         public AdPlan planForAdvertisement { get; set; }//NavProp [one]=>AdPlan
         public int? CarId { get; set; }
         public Car  Car { get; set; }//navProp[one]

@@ -11,22 +11,41 @@ namespace Arabytak.Core.Entities
     {
         [EnumMember(Value = "Weekly")]
         Weekly,
-        
 
-        [EnumMember(Value = "Monthly")]  
+
+        [EnumMember(Value = "Monthly")]
         Monthly,
 
-        [EnumMember(Value = "Yearly")]   
+        [EnumMember(Value = "Yearly")]
         Yearly
     }
-    public class AdPlan:BaseEntity
+    public class AdPlan : BaseEntity
     {
         public PlanType planType { get; set; }
         public decimal Price { get; set; }
+        public AdPlan() { }
+
+        public AdPlan(PlanType PlanType)
+        {
+            planType = PlanType;
+            Price = GetDefaultPrice(PlanType);
+        }
+
+        public static decimal GetDefaultPrice(PlanType planType)
+        {
+            return planType switch
+            {
+                PlanType.Weekly => 500m,
+                PlanType.Monthly => 5000m,
+                PlanType.Yearly => 15000m,
+                _ => 0m
+            };
+        }
         //public string PlanName { get; set; }        // اسم الخطة (مثل أسبوعي، شهري)
         //  public int DurationInDays { get; set; }     // مدة الخطة بالأيام
 
         // public ICollection<Advertisement> advertisements { get; set; } = new HashSet<Advertisement>();//NavProp[Many]=>Each plan have Many Advertisement--dont need this but Handle by FluentApi
         // use this prop when i need to deliver to what this plan use in Any Advertisement ex: have plan i need to what advertisement use this plan
+
     }
 }

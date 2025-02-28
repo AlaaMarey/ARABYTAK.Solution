@@ -17,6 +17,7 @@
                 401 => "UnAuthorized",
                 404 => "NotFound",
                 500 => "ServerError",
+
                 _ => null
             };
         }

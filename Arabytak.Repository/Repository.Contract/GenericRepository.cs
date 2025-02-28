@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,10 +15,12 @@ namespace Arabytak.Repository.Repository.Contract
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly ArabytakContext _dbContext;
+        private readonly DbSet<T> _dbSet;
 
         public GenericRepository(ArabytakContext DbContext)
         {
             _dbContext = DbContext;
+            _dbSet= _dbContext.Set<T>();
         }
         public async Task AddAsync(T entity)
         {
@@ -27,6 +30,11 @@ namespace Arabytak.Repository.Repository.Contract
         public void DeleteAsync(T entity)
         {
            _dbContext.Remove(entity);
+        }
+
+        public async Task<T> FindAsync(Expression<Func<T, bool>> predicate)
+        {
+           return await _dbSet.FirstOrDefaultAsync(predicate);
         }
 
         public async Task<IReadOnlyList<T>> GetAllAsync()
@@ -63,6 +71,11 @@ namespace Arabytak.Repository.Repository.Contract
         public async Task<T> GetWithSpecAsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate)
+        {
+           return await _dbSet.Where(predicate).ToListAsync();
         }
 
         public void UpdateAsync(T entity)
