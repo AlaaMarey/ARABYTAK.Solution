@@ -60,5 +60,12 @@ namespace Arabytak.Core.Specification.CarSpecification
             Includes.Add(d => d.dealership);
             Includes.Add(p => p.Url);
         }
+        public CarWithBrandAndCategoryAndPicUrlAndSpecSpecification(int id) : base(c => c.Id==id)
+        {
+            Includes.Add(p => p.brand);
+            Includes.Add(m => m.model);
+            Includes.Add(d => d.dealership);
+            Includes.Add(p => p.Url);
+        }
     }
 }

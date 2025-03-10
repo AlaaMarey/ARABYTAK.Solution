@@ -22,5 +22,6 @@ namespace Arabytak.Core.Repositories.Contract
         Task<int> GetCountAsync(ISpecification<T> spec);
         Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate);
         Task<T> FindAsync(Expression<Func<T, bool>> predicate);
+        Task AddRangeAsync(IEnumerable<T> entities);
     }
 }

@@ -27,6 +27,12 @@ namespace Arabytak.Repository.Repository.Contract
             await _dbContext.AddAsync(entity);
         }
 
+        public async Task AddRangeAsync(IEnumerable<T> entities)
+        {
+           await _dbSet.AddRangeAsync(entities);
+
+        }
+
         public void DeleteAsync(T entity)
         {
            _dbContext.Remove(entity);
@@ -53,9 +59,9 @@ namespace Arabytak.Repository.Repository.Contract
             return await ApplySpecification(spec).ToListAsync();
         }
 
-        public Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(int id)
         {
-            throw new NotImplementedException();
+          return await  _dbSet.FindAsync(id);
         }
 
             public async Task<T> GetByIdWithSpecAsync( ISpecification<T> spec)

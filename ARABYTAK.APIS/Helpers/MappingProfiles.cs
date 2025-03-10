@@ -7,7 +7,7 @@ namespace ARABYTAK.APIS.Helpers
     public class MappingProfiles:Profile
     {
         public MappingProfiles()
-       {
+        {
             CreateMap<Car, CarDto>()
                 .ForMember(c => c.DealershipName, d => d.MapFrom(s => s.dealership.Name))
                 .ForMember(c => c.brand, d => d.MapFrom(s => s.brand.Name))
@@ -16,8 +16,9 @@ namespace ARABYTAK.APIS.Helpers
               .ForMember(c => c.Url, d => d.MapFrom(s => s.Url.Select(u => new CarPictureDto { Url = u.PictureUrl }).ToList()))
             .ForMember(dest => dest.Url, opt => opt.MapFrom<PictureUrlResolver>());
             //.ForMember(c=>c.Url,d=>d.MapFrom(s=>s.Url.SelectMany(u=>u.PictureUrl )))
-            CreateMap<SpecNewCar, SpecNewCarDto>();
-            CreateMap<SpecUsedCar, SpecUsedCarDto>();
+            CreateMap<SpecNewCar, SpecNewCarDto>().ReverseMap();
+            CreateMap<SpecUsedCar, SpecUsedCarDto>().ReverseMap();
+            CreateMap<SpecUsedCarDto,SpecUsedCar>().ReverseMap();
             CreateMap<CarPictureUrl, CarPictureDto>();
             CreateMap<Car, CarListDto>()
                 .ForMember(c => c.DealershipName, d => d.MapFrom(s => s.dealership.Name))
@@ -104,6 +105,62 @@ namespace ARABYTAK.APIS.Helpers
                 .ForMember(dest=>dest.Price,opt=>opt.MapFrom(src=>src.Price))
                 .ForMember(dest => dest.Image, opt => opt.MapFrom(src =>
      src.Car.Url.Select(url => new CarPictureDto { Url = url.PictureUrl }).FirstOrDefault()));
+
+            CreateMap<InputNewCarDto, Car>()
+    .ForMember(dest => dest.Id, opt => opt.Ignore()) // يتم توليده تلقائيًا
+    .ForMember(dest => dest.BrandId, opt => opt.Ignore()) // يتم تحديده داخل الـ Controller
+    .ForMember(dest => dest.ModelId, opt => opt.Ignore())
+    .ForMember(dest => dest.DealershipId, opt => opt.Ignore())
+     .ForMember(dest => dest.dealership, opt => opt.Ignore())
+     .ForMember(dest => dest.brand, opt => opt.Ignore()) // تجاهل التعيين التلقائي لـ Brand
+    .ForMember(dest => dest.model, opt => opt.Ignore()) // تجاهل التعيين التلقائي لـ Model
+    .ForMember(dest => dest.specNewCar, opt => opt.MapFrom(src => new SpecNewCar
+    {
+        Gears = src.Gears,
+        Fuel = src.Fuel,
+        FuelEfficiency = src.FuelEfficiency,
+        Acceleration = src.Acceleration,
+        Drivetrain = src.Drivetrain,
+        AssemblyCountry = src.AssemblyCountry,
+        Color = src.Color,
+        GroundClearance = src.GroundClearance,
+        Height = src.Height,
+        HorsePower = src.HorsePower,
+        Length = src.Length,
+        OriginCountry = src.OriginCountry,
+        Seats = src.Seats,
+        TopSpeed = src.TopSpeed,
+        Transmission = src.Transmission,
+        TrunkSize = src.TrunkSize,
+        Wheelbase = src.Wheelbase,
+        Width = src.Width,
+        Year = src.Year
+    }))
+    .ForMember(dest => dest.Url, opt => opt.Ignore()); // يتم تحديد الصور داخل الـ Controller
+
+            CreateMap<InputUsedCarDto, Car>()
+   .ForMember(dest => dest.Id, opt => opt.Ignore()) // يتم توليده تلقائيًا
+   .ForMember(dest => dest.BrandId, opt => opt.Ignore()) // يتم تحديده داخل الـ Controller
+   .ForMember(dest => dest.ModelId, opt => opt.Ignore())
+   .ForMember(dest => dest.DealershipId, opt => opt.Ignore())
+    .ForMember(dest => dest.dealership, opt => opt.Ignore())
+    .ForMember(dest => dest.brand, opt => opt.Ignore()) // تجاهل التعيين التلقائي لـ Brand
+   .ForMember(dest => dest.model, opt => opt.Ignore()) // تجاهل التعيين التلقائي لـ Model
+   .ForMember(dest => dest.specUsedCar, opt => opt.MapFrom(src => new SpecUsedCar
+   {
+      City = src.City,
+      Description   = src.Description,
+      Color = src.Color,
+      FuelType= src.FuelType,
+      ManufacturingYear = src.ManufacturingYear,
+      Mileage=src.Mileage,
+      Transmission=src.Transmission,
+   }))
+   .ForMember(dest => dest.Url, opt => opt.Ignore());
+
+
+
+
         }
 
 
