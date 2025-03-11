@@ -1,6 +1,7 @@
 ﻿using Arabytak.Core.Entities;
 using ARABYTAK.APIS.DTOs;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 
 namespace ARABYTAK.APIS.Helpers
 {
@@ -161,7 +162,9 @@ namespace ARABYTAK.APIS.Helpers
 
 
 
+        CreateMap<RoleDto, IdentityRole>();
         }
+
 
 
     }

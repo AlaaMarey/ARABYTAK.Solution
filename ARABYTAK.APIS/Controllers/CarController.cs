@@ -15,7 +15,7 @@ using System.Text.Json.Serialization;
 
 namespace ARABYTAK.APIS.Controllers
 {
-
+    //[Authorize(Roles = "User" , AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
     public class CarController : BaseApiController
     {
         // private readonly IGenericRepository<Car> _genericRepository;
@@ -125,7 +125,7 @@ namespace ARABYTAK.APIS.Controllers
 
 
 
-
+       // [Authorize(Roles = "User", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost("CreateNewCar")]
         public async Task<ActionResult> CreateNewCar([FromForm] InputNewCarDto carDto)
         {
@@ -206,6 +206,10 @@ namespace ARABYTAK.APIS.Controllers
         }
 
 
+
+
+
+
         [HttpPost("CreateUsedCar")]
         public async Task<ActionResult> CreateUsedCar([FromForm] InputUsedCarDto carDto)
         {
@@ -272,6 +276,10 @@ namespace ARABYTAK.APIS.Controllers
 
             return Ok(new { message = "Used Car created successfully" });
         }
+
+
+
+
 
         [HttpPut("new/{id}")]
         public async Task<IActionResult> UpdateNewCar(int id, [FromForm] InputNewCarDto carDto)

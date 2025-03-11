@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace ARABYTAK.APIS
@@ -30,7 +32,12 @@ namespace ARABYTAK.APIS
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddScoped(typeof(IUnitOfWork),typeof(UnitOfWork));
             builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
+
+
             builder.Services.AddSwaggerGen();
+
+
+
             builder.Services.AddDbContext<ArabytakContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));// second Step to connection db , to use AddDbContext We need use take reference from Repository To read library
             builder.Services.AddDbContext<AppIdentityDbContext>(option =>
             {
@@ -101,6 +108,9 @@ namespace ARABYTAK.APIS
 
                 app.UseHttpsRedirection();
 
+
+
+                app.UseAuthentication();
                 app.UseAuthorization();
                 app.UseStaticFiles();
 
